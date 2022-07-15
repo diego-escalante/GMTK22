@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public static class HumanFactory {
 
-    private static Action[] actions = Resources.FindObjectsOfTypeAll<Action>();
+    private static Action[] actions = Resources.LoadAll<Action>("Actions");
     private static Action emptyAction = GetAction("Empty");
 
     public static Human CreateHuman() {
