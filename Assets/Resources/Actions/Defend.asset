@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da46f69107d22df4283f4e67bfe1396c, type: 3}
   m_Name: Defend
   m_EditorClassIdentifier: 
-  name: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: e951207fcec615d4e9610f0614909cf8, type: 3}
+  color: {r: 0.13725491, g: 0.6901961, b: 0.69803923, a: 1}

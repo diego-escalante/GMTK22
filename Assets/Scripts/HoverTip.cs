@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 public class HoverTip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
     [SerializeField][Multiline] private string text;
-    private float showDelay = 1f;
+    private float showDelay = 0.75f;
 
     public void OnPointerEnter(PointerEventData _) {
         StartCoroutine(ShowAfterDelay());

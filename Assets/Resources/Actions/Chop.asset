@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da46f69107d22df4283f4e67bfe1396c, type: 3}
   m_Name: Chop
   m_EditorClassIdentifier: 
-  name: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: e10c72d82a038ba4cb0d311f165e9976, type: 3}
+  color: {r: 0.7019608, g: 0.42745098, b: 0.13725491, a: 1}
