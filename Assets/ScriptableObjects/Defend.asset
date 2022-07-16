@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d33d256e03417a43b2e642588d2b4f8, type: 3}
+  m_Name: Defend
+  m_EditorClassIdentifier: 
+  <Description>k__BackingField: "Puts humans on guard to fight off \nany enemy threats
+    during nighttime."
+  <action>k__BackingField: {fileID: 11400000, guid: 1663e54fcb1e34b4eb24f27dc72488fb, type: 2}
+  <secondaryAction>k__BackingField: {fileID: 11400000, guid: 6f9dc0456c82a5e4e9cb726bf9f26aeb, type: 2}
+  <SlotCount>k__BackingField: 6

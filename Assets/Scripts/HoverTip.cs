@@ -3,8 +3,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class HoverTip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
-    [SerializeField][Multiline] private string text;
-    private float showDelay = 0.75f;
+    [field: SerializeField][field: Multiline] public string Text { get; set; }
+    private float showDelay = 0.5f;
 
     public void OnPointerEnter(PointerEventData _) {
         StartCoroutine(ShowAfterDelay());
@@ -17,6 +17,6 @@ public class HoverTip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     private IEnumerator ShowAfterDelay() {
         yield return new WaitForSeconds(showDelay);
-        TooltipController.ShowTooltip(text);
+        TooltipController.ShowTooltip(Text);
     }
 }

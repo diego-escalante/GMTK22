@@ -20,8 +20,11 @@ public class DisplayHuman : MonoBehaviour {
         UpdateHuman();
     }
 
-    private void UpdateHuman() {
+    public void UpdateHuman() {
         Human human = humanController.Human;
+        
+        facialHair.enabled = true;
+        hair.enabled = true;
         
         if (human.Head != null) {
             head.enabled = true;
@@ -47,5 +50,14 @@ public class DisplayHuman : MonoBehaviour {
         } else {
             hair.enabled = false;
         }
+    }
+
+    public void DisplayAction(Action action) {
+        facialHair.enabled = false;
+        hair.enabled = false;
+
+        head.enabled = true;
+        head.sprite = action.icon;
+        head.color = action.color;
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -21,33 +22,43 @@ public class DragDropController : MonoBehaviour, IBeginDragHandler, IEndDragHand
         prevPos = rectTransform.anchoredPosition;
         canvasGroup.alpha = 0.5f;
         canvasGroup.blocksRaycasts = false;
-        transform.parent.SetAsLastSibling();
+        
+        Canvas tempCanvas = gameObject.AddComponent<Canvas>();
+        tempCanvas.overrideSorting = true;
+        tempCanvas.sortingOrder = 5;
     }
 
     public void OnDrag(PointerEventData eventData) {
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor / transform.lossyScale;
+        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData) {
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
+        Destroy(GetComponent<Canvas>());
+
+        GameObject otherHuman = null;
+        GameObject otherSlot = null;
 
         foreach (GameObject other in eventData.hovered) {
             switch (other.tag) {
                 case "Human":
-                    // Swap places with other human.
-                    Transform tempParent = transform.parent;
-                    InsertHumanInSlot(transform, other.transform.parent);
-                    InsertHumanInSlot(other.transform, tempParent);
-                    return;
+                    otherHuman = other;
+                    break;
                 case "Human Slot":
-                    // Insert human to slot.
-                    InsertHumanInSlot(transform, other.transform);
-                    return;
-                default:
-                    // Skip unrecognized objects.
-                    continue;
+                    otherSlot = other;
+                    break;
             }
+        }
+
+        if (otherHuman != null) {
+            // Swap places with other human.
+            Transform tempParent = transform.parent;
+            InsertHumanInSlot(transform, otherHuman.transform.parent);
+            InsertHumanInSlot(otherHuman.transform, tempParent);
+        } else if (otherSlot != null) {
+            // Insert human to slot.
+            InsertHumanInSlot(transform, otherSlot.transform);
         }
 
         // Human wasn't dragged to a valid spot. Reset position.
